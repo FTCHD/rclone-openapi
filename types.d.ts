@@ -2678,6 +2678,10 @@ export interface components {
             metadata?: boolean;
             /** @description Specify one or more hash algorithms to include when `showHash` is true (e.g. `md5`). */
             hashTypes?: string[];
+            /** @description JSON encoded config overrides applied for this call only. */
+            _config?: string;
+            /** @description JSON encoded filter overrides applied for this call only. */
+            _filter?: string;
             /** @description Assign the request to a custom stats group. */
             _group?: string;
             /** @description Run the command asynchronously. Returns a job id immediately. */
@@ -2956,6 +2960,10 @@ export interface components {
             [key: string]: unknown;
         };
         OptionsLocalRequest: {
+            /** @description JSON encoded config overrides applied for this call only. */
+            _config?: string;
+            /** @description JSON encoded filter overrides applied for this call only. */
+            _filter?: string;
             /** @description Assign the request to a custom stats group. */
             _group?: string;
             /** @description Run the command asynchronously. Returns a job id immediately. */
@@ -6675,6 +6683,10 @@ export interface operations {
                 metadata?: components["parameters"]["Operations_ListPostMetadataParam"];
                 /** @description Specify one or more hash algorithms to include when `showHash` is true (e.g. `md5`). */
                 hashTypes?: components["parameters"]["Operations_ListPostHashTypesParam"];
+                /** @description JSON encoded config overrides applied for this call only. */
+                _config?: components["parameters"]["GlobalConfigParam"];
+                /** @description JSON encoded filter overrides applied for this call only. */
+                _filter?: components["parameters"]["GlobalFilterParam"];
                 /** @description Assign the request to a custom stats group. */
                 _group?: components["parameters"]["GlobalGroupParam"];
                 /** @description Run the command asynchronously. Returns a job id immediately. */
@@ -7268,6 +7280,10 @@ export interface operations {
     optionsLocal: {
         parameters: {
             query?: {
+                /** @description JSON encoded config overrides applied for this call only. */
+                _config?: components["parameters"]["GlobalConfigParam"];
+                /** @description JSON encoded filter overrides applied for this call only. */
+                _filter?: components["parameters"]["GlobalFilterParam"];
                 /** @description Assign the request to a custom stats group. */
                 _group?: components["parameters"]["GlobalGroupParam"];
                 /** @description Run the command asynchronously. Returns a job id immediately. */
