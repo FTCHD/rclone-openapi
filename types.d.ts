@@ -2019,7 +2019,7 @@ export interface components {
                 Value: boolean;
                 Valid: boolean;
             };
-            Value: boolean | number | null;
+            Value: unknown;
             Hide: number;
             Required: boolean;
             IsPassword: boolean;
@@ -3896,21 +3896,21 @@ export interface components {
             };
             content: {
                 "application/json": {
-                    dlna: components["schemas"]["OptionsInfoOption"][];
-                    filter: components["schemas"]["OptionsInfoOption"][];
-                    ftp: components["schemas"]["OptionsInfoOption"][];
-                    http: components["schemas"]["OptionsInfoOption"][];
-                    log: components["schemas"]["OptionsInfoOption"][];
-                    main: components["schemas"]["OptionsInfoOption"][];
-                    mount: components["schemas"]["OptionsInfoOption"][];
-                    nfs: components["schemas"]["OptionsInfoOption"][];
-                    proxy: components["schemas"]["OptionsInfoOption"][];
-                    rc: components["schemas"]["OptionsInfoOption"][];
-                    restic: components["schemas"]["OptionsInfoOption"][];
-                    s3: components["schemas"]["OptionsInfoOption"][];
-                    sftp: components["schemas"]["OptionsInfoOption"][];
-                    vfs: components["schemas"]["OptionsInfoOption"][];
-                    webdav: components["schemas"]["OptionsInfoOption"][];
+                    dlna?: components["schemas"]["OptionsInfoOption"][];
+                    filter?: components["schemas"]["OptionsInfoOption"][];
+                    ftp?: components["schemas"]["OptionsInfoOption"][];
+                    http?: components["schemas"]["OptionsInfoOption"][];
+                    log?: components["schemas"]["OptionsInfoOption"][];
+                    main?: components["schemas"]["OptionsInfoOption"][];
+                    mount?: components["schemas"]["OptionsInfoOption"][];
+                    nfs?: components["schemas"]["OptionsInfoOption"][];
+                    proxy?: components["schemas"]["OptionsInfoOption"][];
+                    rc?: components["schemas"]["OptionsInfoOption"][];
+                    restic?: components["schemas"]["OptionsInfoOption"][];
+                    s3?: components["schemas"]["OptionsInfoOption"][];
+                    sftp?: components["schemas"]["OptionsInfoOption"][];
+                    vfs?: components["schemas"]["OptionsInfoOption"][];
+                    webdav?: components["schemas"]["OptionsInfoOption"][];
                 } & {
                     [key: string]: components["schemas"]["OptionsInfoOption"][];
                 };
