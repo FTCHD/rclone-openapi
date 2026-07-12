@@ -3213,6 +3213,8 @@ export interface components {
             };
             content: {
                 "application/json": {
+                    /** @description Identifier for this rclone process. */
+                    executeId: string;
                     /** @description Job identifier. Pass to /job/status to track progress. */
                     jobid: number;
                 };
@@ -3667,6 +3669,8 @@ export interface components {
             };
             content: {
                 "application/json": {
+                    /** @description Identifier for this rclone process. */
+                    executeId: string;
                     /** @description True once the job has completed. */
                     finished: boolean;
                     /** @description Execution time in seconds. */

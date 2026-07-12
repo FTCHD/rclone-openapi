@@ -3998,10 +3998,14 @@ components:
           schema:
             type: object
             properties:
+              executeId:
+                type: string
+                description: Identifier for this rclone process.
               jobid:
                 type: integer
                 description: Job identifier. Pass to /job/status to track progress.
             required:
+              - executeId
               - jobid
     ServeTypesResponse:
       description: Supported rclone serve protocols.
@@ -4623,6 +4627,9 @@ components:
           schema:
             type: object
             properties:
+              executeId:
+                type: string
+                description: Identifier for this rclone process.
               finished:
                 type: boolean
                 description: True once the job has completed.
@@ -4649,6 +4656,7 @@ components:
               progress:
                 description: Progress measurements supplied by the underlying command.
             required:
+              - executeId
               - finished
               - duration
               - endTime
