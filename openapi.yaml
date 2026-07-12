@@ -5698,6 +5698,9 @@ components:
     JobBatchRequest:
       type: object
       properties:
+        _group:
+          type: string
+          description: Stats group this batch accumulates under.
         concurrency:
           type: integer
           description: Do this many commands concurrently. Defaults to --transfers if not set.
@@ -5712,6 +5715,9 @@ components:
               _path:
                 type: string
                 description: rc/path
+              _group:
+                type: string
+                description: Stats group this input accumulates under.
             additionalProperties: true
         _async:
           type: boolean
