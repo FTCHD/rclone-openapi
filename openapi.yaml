@@ -4259,6 +4259,14 @@ components:
                   additionalProperties: true
                   required:
                     - group
+                    - name
+                    - size
+                    - bytes
+                    - checked
+                    - what
+                    - started_at
+                    - completed_at
+                    - error
             required:
               - transferred
     DebugSetGcPercentResponse:

@@ -7056,7 +7056,15 @@
                     },
                     "additionalProperties": true,
                     "required": [
-                      "group"
+                      "group",
+                      "name",
+                      "size",
+                      "bytes",
+                      "checked",
+                      "what",
+                      "started_at",
+                      "completed_at",
+                      "error"
                     ]
                   }
                 }
