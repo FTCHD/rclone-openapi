@@ -980,6 +980,46 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/config/oauthstatus": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Get OAuth server status
+         * @description Returns the status of the interactive OAuth authentication server, including the authorization URL when it is running.
+         */
+        post: operations["configOauthstatus"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/config/oauthstop": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Stop OAuth server
+         * @description Stops the interactive OAuth authentication server if one is running. Returns an error if no OAuth flow is in progress.
+         */
+        post: operations["configOauthstop"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/config/password": {
         parameters: {
             query?: never;
@@ -2563,6 +2603,18 @@ export interface components {
             /** @description Run the command asynchronously. Returns a job id immediately. */
             _async?: boolean;
         };
+        ConfigOauthstatusRequest: {
+            /** @description Assign the request to a custom stats group. */
+            _group?: string;
+            /** @description Run the command asynchronously. Returns a job id immediately. */
+            _async?: boolean;
+        };
+        ConfigOauthstopRequest: {
+            /** @description Assign the request to a custom stats group. */
+            _group?: string;
+            /** @description Run the command asynchronously. Returns a job id immediately. */
+            _async?: boolean;
+        };
         ConfigPasswordRequest: {
             /** @description Name of the remote whose secrets should be updated. */
             name?: string;
@@ -3543,6 +3595,23 @@ export interface components {
             content: {
                 "application/json": {
                     remotes: string[];
+                };
+            };
+        };
+        /** @description Status of the interactive OAuth authentication server. */
+        ConfigOauthstatusResponse: {
+            headers: {
+                [name: string]: unknown;
+            };
+            content: {
+                "application/json": {
+                    /**
+                     * @description Whether the OAuth authentication server is currently running.
+                     * @enum {string}
+                     */
+                    status: "running" | "stopped";
+                    /** @description Authorization URL to open in a browser. Present only when status is "running". */
+                    authUrl?: string;
                 };
             };
         };
@@ -6272,6 +6341,60 @@ export interface operations {
         };
         responses: {
             200: components["responses"]["ConfigListremotesResponse"];
+            202: components["responses"]["AsyncJobResponse"];
+            "4XX": components["responses"]["RcError"];
+            "5XX": components["responses"]["RcError"];
+        };
+    };
+    configOauthstatus: {
+        parameters: {
+            query?: {
+                /** @description Assign the request to a custom stats group. */
+                _group?: components["parameters"]["GlobalGroupParam"];
+                /** @description Run the command asynchronously. Returns a job id immediately. */
+                _async?: components["parameters"]["GlobalAsyncParam"];
+            };
+            header?: {
+                /** @description Set to "respond-async" with _async=true to receive HTTP 202 instead of 200. */
+                Prefer?: components["parameters"]["PreferAsyncHeader"];
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ConfigOauthstatusRequest"];
+            };
+        };
+        responses: {
+            200: components["responses"]["ConfigOauthstatusResponse"];
+            202: components["responses"]["AsyncJobResponse"];
+            "4XX": components["responses"]["RcError"];
+            "5XX": components["responses"]["RcError"];
+        };
+    };
+    configOauthstop: {
+        parameters: {
+            query?: {
+                /** @description Assign the request to a custom stats group. */
+                _group?: components["parameters"]["GlobalGroupParam"];
+                /** @description Run the command asynchronously. Returns a job id immediately. */
+                _async?: components["parameters"]["GlobalAsyncParam"];
+            };
+            header?: {
+                /** @description Set to "respond-async" with _async=true to receive HTTP 202 instead of 200. */
+                Prefer?: components["parameters"]["PreferAsyncHeader"];
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ConfigOauthstopRequest"];
+            };
+        };
+        responses: {
+            200: components["responses"]["EmptyObjectResponse"];
             202: components["responses"]["AsyncJobResponse"];
             "4XX": components["responses"]["RcError"];
             "5XX": components["responses"]["RcError"];
