@@ -1326,6 +1326,54 @@ paths:
         5XX:
           $ref: "#/components/responses/RcError"
       operationId: configListremotes
+  /config/oauthstatus:
+    post:
+      summary: Get OAuth server status
+      description: Returns the status of the interactive OAuth authentication server, including the authorization URL when it is running.
+      tags: []
+      parameters:
+        - $ref: "#/components/parameters/GlobalGroupParam"
+        - $ref: "#/components/parameters/GlobalAsyncParam"
+        - $ref: "#/components/parameters/PreferAsyncHeader"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ConfigOauthstatusRequest"
+      responses:
+        "200":
+          $ref: "#/components/responses/ConfigOauthstatusResponse"
+        "202":
+          $ref: "#/components/responses/AsyncJobResponse"
+        4XX:
+          $ref: "#/components/responses/RcError"
+        5XX:
+          $ref: "#/components/responses/RcError"
+      operationId: configOauthstatus
+  /config/oauthstop:
+    post:
+      summary: Stop OAuth server
+      description: Stops the interactive OAuth authentication server if one is running. Returns an error if no OAuth flow is in progress.
+      tags: []
+      parameters:
+        - $ref: "#/components/parameters/GlobalGroupParam"
+        - $ref: "#/components/parameters/GlobalAsyncParam"
+        - $ref: "#/components/parameters/PreferAsyncHeader"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ConfigOauthstopRequest"
+      responses:
+        "200":
+          $ref: "#/components/responses/EmptyObjectResponse"
+        "202":
+          $ref: "#/components/responses/AsyncJobResponse"
+        4XX:
+          $ref: "#/components/responses/RcError"
+        5XX:
+          $ref: "#/components/responses/RcError"
+      operationId: configOauthstop
   /config/password:
     post:
       summary: Update remote secrets
@@ -4417,6 +4465,24 @@ components:
                 type: array
                 items:
                   type: string
+    ConfigOauthstatusResponse:
+      description: Status of the interactive OAuth authentication server.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                enum:
+                  - running
+                  - stopped
+                description: Whether the OAuth authentication server is currently running.
+              authUrl:
+                type: string
+                description: Authorization URL to open in a browser. Present only when status is "running".
+            required:
+              - status
     ConfigPathsResponse:
       description: Paths to the config file, cache directory, and temporary directory.
       content:
@@ -6722,6 +6788,24 @@ components:
           type: boolean
           description: Run the command asynchronously. Returns a job id immediately.
     ConfigListremotesRequest:
+      type: object
+      properties:
+        _group:
+          type: string
+          description: Assign the request to a custom stats group.
+        _async:
+          type: boolean
+          description: Run the command asynchronously. Returns a job id immediately.
+    ConfigOauthstatusRequest:
+      type: object
+      properties:
+        _group:
+          type: string
+          description: Assign the request to a custom stats group.
+        _async:
+          type: boolean
+          description: Run the command asynchronously. Returns a job id immediately.
+    ConfigOauthstopRequest:
       type: object
       properties:
         _group:
