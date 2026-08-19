@@ -5032,22 +5032,6 @@ components:
         application/json:
           schema:
             type: object
-            required:
-              - dlna
-              - filter
-              - ftp
-              - http
-              - log
-              - main
-              - mount
-              - nfs
-              - proxy
-              - rc
-              - restic
-              - s3
-              - sftp
-              - vfs
-              - webdav
             properties:
               dlna:
                 type: array
@@ -5943,11 +5927,7 @@ components:
                 - Value
                 - Valid
               additionalProperties: false
-        Value:
-          anyOf:
-            - type: boolean
-            - type: number
-            - type: "null"
+        Value: {}
         Hide:
           type: integer
         Required:
