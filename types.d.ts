@@ -1985,12 +1985,16 @@ export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
         JobBatchRequest: {
+            /** @description Stats group this batch accumulates under. */
+            _group?: string;
             /** @description Do this many commands concurrently. Defaults to --transfers if not set. */
             concurrency?: number;
             /** @description List of inputs to the commands with an extra _path parameter. */
             inputs?: ({
                 /** @description rc/path */
                 _path: string;
+                /** @description Stats group this input accumulates under. */
+                _group?: string;
             } & {
                 [key: string]: unknown;
             })[];
