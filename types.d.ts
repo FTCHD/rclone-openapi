@@ -3441,18 +3441,18 @@ export interface components {
                         srcRemote?: string;
                         /** @description Destination path within `dstFs`, when provided. */
                         dstRemote?: string;
-                        name?: string;
-                        size?: number;
-                        bytes?: number;
-                        checked?: boolean;
+                        name: string;
+                        size: number;
+                        bytes: number;
+                        checked: boolean;
                         /** @enum {string} */
-                        what?: "transferring" | "deleting" | "checking" | "importing" | "hashing" | "merging" | "listing" | "moving" | "renaming";
+                        what: "transferring" | "deleting" | "checking" | "importing" | "hashing" | "merging" | "listing" | "moving" | "renaming";
                         /** @description ISO8601 timestamp when the transfer started. */
-                        started_at?: string;
+                        started_at: string;
                         /** @description ISO8601 timestamp when the transfer completed. */
-                        completed_at?: string;
+                        completed_at: string;
                         timestamp?: number;
-                        error?: string;
+                        error: string;
                         jobid?: number;
                     } & {
                         [key: string]: unknown;
