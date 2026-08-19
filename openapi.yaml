@@ -1714,6 +1714,8 @@ paths:
         - $ref: "#/components/parameters/Operations_ListPostFilesOnlyParam"
         - $ref: "#/components/parameters/Operations_ListPostMetadataParam"
         - $ref: "#/components/parameters/Operations_ListPostHashTypesParam"
+        - $ref: "#/components/parameters/GlobalConfigParam"
+        - $ref: "#/components/parameters/GlobalFilterParam"
         - $ref: "#/components/parameters/GlobalGroupParam"
         - $ref: "#/components/parameters/GlobalAsyncParam"
         - $ref: "#/components/parameters/PreferAsyncHeader"
@@ -2180,6 +2182,8 @@ paths:
       description: Returns the current effective options for this request, including `_config` and `_filter` overrides.
       tags: []
       parameters:
+        - $ref: "#/components/parameters/GlobalConfigParam"
+        - $ref: "#/components/parameters/GlobalFilterParam"
         - $ref: "#/components/parameters/GlobalGroupParam"
         - $ref: "#/components/parameters/GlobalAsyncParam"
         - $ref: "#/components/parameters/PreferAsyncHeader"
@@ -7004,6 +7008,12 @@ components:
           items:
             type: string
           description: Specify one or more hash algorithms to include when `showHash` is true (e.g. `md5`).
+        _config:
+          type: string
+          description: JSON encoded config overrides applied for this call only.
+        _filter:
+          type: string
+          description: JSON encoded filter overrides applied for this call only.
         _group:
           type: string
           description: Assign the request to a custom stats group.
@@ -7389,6 +7399,12 @@ components:
     OptionsLocalRequest:
       type: object
       properties:
+        _config:
+          type: string
+          description: JSON encoded config overrides applied for this call only.
+        _filter:
+          type: string
+          description: JSON encoded filter overrides applied for this call only.
         _group:
           type: string
           description: Assign the request to a custom stats group.
